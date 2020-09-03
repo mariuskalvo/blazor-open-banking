@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Services", "Blaz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Infrastructure", "BlazorBank.Infrastructure\BlazorBank.Infrastructure.csproj", "{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AB79914D-928F-429A-9824-3FBDD790EDD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Infrastructure.Tests.Integration", "BlazorBank.Infrastructure.Tests.Integration\BlazorBank.Infrastructure.Tests.Integration.csproj", "{5119B336-A744-413A-81A9-3921F7685264}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5119B336-A744-413A-81A9-3921F7685264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5119B336-A744-413A-81A9-3921F7685264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5119B336-A744-413A-81A9-3921F7685264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5119B336-A744-413A-81A9-3921F7685264}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5119B336-A744-413A-81A9-3921F7685264} = {AB79914D-928F-429A-9824-3FBDD790EDD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7EDE4DB-890C-46A4-9E47-DCAEFCFBCAD9}
