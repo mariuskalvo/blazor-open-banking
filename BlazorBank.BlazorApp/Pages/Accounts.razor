@@ -1,0 +1,31 @@
+﻿@page "/accounts"
+
+@using BlazorBank.BlazorApp.ViewControllers 
+@using BlazorBank.BlazorApp.Models
+@inject AccountsViewController AccountsViewController
+
+<div>
+    <h1>Accounts</h1>
+    <ul>
+        @foreach (var account in _accounts)
+        {
+            <li>
+                <div>
+                    <div>Account name: @account.AccountName</div>
+                    <div>Account number: @account.AccountNumber</div>
+
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>
+
+@code {
+    private IEnumerable<AccountWeb> _accounts = new List<AccountWeb>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _accounts = await AccountsViewController.GetAccounts();
+    }
+}

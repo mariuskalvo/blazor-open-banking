@@ -1,5 +1,4 @@
 ﻿using BlazorBank.Infrastructure.Models.Accounts;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BlazorBank.Infrastructure.Models.External

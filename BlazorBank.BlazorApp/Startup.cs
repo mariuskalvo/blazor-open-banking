@@ -10,6 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorBank.BlazorApp.Data;
+using BlazorBank.Infrastructure.Proxies;
+using BlazorBank.Services.Services;
+using BlazorBank.Services.Mappers;
+using BlazorBank.Infrastructure.Configuration;
+using System.Runtime.CompilerServices;
+using BlazorBank.Infrastructure.Utils;
+using BlazorBank.BlazorApp.ViewControllers;
+using BlazorBank.Services.Models;
 
 namespace BlazorBank.BlazorApp
 {
@@ -28,7 +36,28 @@ namespace BlazorBank.BlazorApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            
+            services.AddScoped<WeatherForecastService>();
+            services.AddScoped<AccountsViewController>();
+
+            services.AddHttpClient<IAccountProxy, AccountProxy>();
+            services.AddHttpClient<IAccessTokenProxy, AccessTokenProxy>();
+
+            services.AddScoped<IAccountService, AccountService>();
+
+            services.AddSingleton<IHeaderEncoder, SbankenHeaderEncoder>();
+            services.AddSingleton<IAccountMapper, AccountMapper>();
+
+            services.AddSingleton(new CustomerConfiguration
+            {
+                CustomerId = Configuration["CustomerId"]
+            });
+
+            services.AddSingleton<IApiClientConfiguration>(new SbankenApiConfiguration
+            {
+                ClientId = Configuration["ClientId"],
+                ClientSecret = Configuration["ClientSecret"]
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
