@@ -1,0 +1,45 @@
+﻿
+@using BlazorBank.BlazorApp.Models
+@inject NavigationManager NavigationManager
+
+<div class='navbar'>
+    <ul>
+        @foreach (var navbarLink in menuItems)
+        {
+            <li>
+                <a
+                    class="@setActiveClass(navbarLink)"
+                    @onclick="@(e => OnRouteChanged(navbarLink.Path))"
+                    href="@navbarLink.Path"
+                >
+                    @navbarLink.Title
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    private string LocalPath { get; set; } = "/";
+    protected override void OnInitialized()
+    {
+        LocalPath = new Uri(NavigationManager.Uri).LocalPath;
+    }
+
+    private List<NavbarLink> menuItems = new List<NavbarLink>()
+    {
+        new NavbarLink { Title = "Home", Path = "/" },
+        new NavbarLink { Title = "Counter", Path = "/counter" },
+    };
+
+    private void OnRouteChanged(string localPath)
+    {
+        LocalPath = localPath;
+    }
+
+    private string setActiveClass(NavbarLink navbarLink)
+    {
+        var isActive = LocalPath.Equals(navbarLink.Path, StringComparison.InvariantCultureIgnoreCase);
+        return isActive ? "active" : "";
+    }
+}
