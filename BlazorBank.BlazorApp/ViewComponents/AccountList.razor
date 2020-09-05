@@ -1,6 +1,6 @@
 ﻿@using BlazorBank.BlazorApp.Models
 @using System.Globalization
-
+@using BlazorBank.BlazorApp.Formatters
 <div class="account-list__container">
     @if (Accounts != null)
     {
@@ -10,15 +10,15 @@
             <div class="account-list__account-card">
                 <div class="account-list__account-card__account-info">
                     <h4>@account.AccountName</h4>
-                    <small>@account.AccountNumber</small>
+                    <small>@AccountFormatter.FormatAccountNumber(account.AccountNumber)</small>
                 </div>
                 <div class="account-list__account-card__account-balance">
                     <small>Disponibelt</small>
-                    <h4>@FormatCurrencyString(account.Available),-</h4>
+                    <h4>@AccountFormatter.FormatCurrentSum(account.Available),-</h4>
                 </div>
                 <div class="account-list__account-card__account-balance">
                     <small>Saldo</small>
-                    <h4>@FormatCurrencyString(account.Balance),-</h4>
+                    <h4>@AccountFormatter.FormatCurrentSum(account.Balance),-</h4>
                 </div>
 
             </div>
