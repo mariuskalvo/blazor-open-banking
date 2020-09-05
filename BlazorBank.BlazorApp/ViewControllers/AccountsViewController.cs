@@ -20,8 +20,11 @@ namespace BlazorBank.BlazorApp.ViewControllers
             var accountsWeb = accounts.Select(a => new AccountWeb
             {
                 AccountName = a.Name,
-                AccountNumber = a.AccountNumber
+                AccountNumber = a.AccountNumber,
+                Balance = a.Balance,
+                Available = a.Available
             });
+
             return accountsWeb;
         }
     }

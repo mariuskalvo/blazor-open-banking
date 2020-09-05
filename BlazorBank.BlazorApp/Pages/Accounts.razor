@@ -1,25 +1,12 @@
 ﻿@page "/accounts"
 
-@using BlazorBank.BlazorApp.ViewControllers 
+@using BlazorBank.BlazorApp.ViewControllers
 @using BlazorBank.BlazorApp.Models
+@using BlazorBank.BlazorApp.ViewComponents
+
 @inject AccountsViewController AccountsViewController
 
-<div>
-    <h1>Accounts</h1>
-    <ul>
-        @foreach (var account in _accounts)
-        {
-            <li>
-                <div>
-                    <div>Account name: @account.AccountName</div>
-                    <div>Account number: @account.AccountNumber</div>
-
-                </div>
-            </li>
-        }
-    </ul>
-
-</div>
+<AccountList Accounts="@_accounts" Heading="Kontoer" />
 
 @code {
     private IEnumerable<AccountWeb> _accounts = new List<AccountWeb>();

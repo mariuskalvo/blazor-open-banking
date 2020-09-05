@@ -9,7 +9,5 @@ namespace BlazorBank.BlazorApp.Data
         {
             _accountService = accountService;
         }
-
-
     }
 }

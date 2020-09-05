@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.BlazorApp", "BlazorBank.BlazorApp\BlazorBank.BlazorApp.csproj", "{CA1AFF65-0246-44A6-8277-A1FE312AC2C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBank.BlazorApp", "BlazorBank.BlazorApp\BlazorBank.BlazorApp.csproj", "{CA1AFF65-0246-44A6-8277-A1FE312AC2C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Services", "BlazorBank.Services\BlazorBank.Services.csproj", "{97861723-E809-43BA-B02D-4B9D26A47DFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBank.Services", "BlazorBank.Services\BlazorBank.Services.csproj", "{97861723-E809-43BA-B02D-4B9D26A47DFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Infrastructure", "BlazorBank.Infrastructure\BlazorBank.Infrastructure.csproj", "{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBank.Infrastructure", "BlazorBank.Infrastructure\BlazorBank.Infrastructure.csproj", "{4A758434-4C35-4993-B59B-4FA5E9F2A8F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AB79914D-928F-429A-9824-3FBDD790EDD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBank.Infrastructure.Tests.Integration", "BlazorBank.Infrastructure.Tests.Integration\BlazorBank.Infrastructure.Tests.Integration.csproj", "{5119B336-A744-413A-81A9-3921F7685264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBank.Infrastructure.Tests.Integration", "BlazorBank.Infrastructure.Tests.Integration\BlazorBank.Infrastructure.Tests.Integration.csproj", "{5119B336-A744-413A-81A9-3921F7685264}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
