@@ -31,7 +31,9 @@ namespace BlazorBank.Services.Services
             if (getCardsResponse.Items == null)
                 return new List<CardInternal>();
 
-            return getCardsResponse.Items.Select(_cardMapper.MapCardExternalToCardInternal);
+            return getCardsResponse.Items
+                .Select(_cardMapper.MapCardExternalToCardInternal)
+                .Where(c => c.Status == CardStatus.Active);
         }
     }
 }
