@@ -43,8 +43,7 @@ namespace BlazorBank.Services.Services
             if (string.IsNullOrEmpty(customerId))
                 throw new ArgumentException("CustomerId is not set.");
 
-            var accessTokenResult = await _accessTokenProxy.GetAccessToken(customerId);
-            var getAccountsResult = await _accountProxy.GetAccounts(customerId, accessTokenResult.AccessToken);
+            var getAccountsResult = await _accountProxy.GetAccounts(customerId);
             
             if (getAccountsResult.IsError)
                 return new List<AccountInternal>();

@@ -36,13 +36,13 @@ namespace BlazorBank.Services.Tests.Unit
             var cardMapper = new CardMapper();
             var customerConfiguration = new CustomerConfiguration { CustomerId = "CustomerId" };
 
-            _cardService = new CardService(_cardProxyMock.Object, _accessTokenProxyMock.Object, cardMapper, customerConfiguration);
+            _cardService = new CardService(_cardProxyMock.Object, cardMapper, customerConfiguration);
         }
 
         [Test]
         public async Task GetCards_OnlyActiveCardsAreReturned()
         {
-            _cardProxyMock.Setup(c => c.GetCards(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(new GetCardsResponse
+            _cardProxyMock.Setup(c => c.GetCards(It.IsAny<string>())).ReturnsAsync(new GetCardsResponse
             {
                 AvailableItems = 2,
                 Items = new List<CardExternal>

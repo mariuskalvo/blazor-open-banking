@@ -2,6 +2,8 @@
 using BlazorBank.Infrastructure.Proxies;
 using BlazorBank.Infrastructure.Tests.Integration.Utils;
 using BlazorBank.Infrastructure.Utils;
+using BlazorBank.Infrastructure.Utils.AccessToken;
+using LazyCache;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -43,15 +45,17 @@ namespace BlazorBank.Infrastructure.Tests.Integration
                 _apiClientConfiguration,
                 _headerEncoder
             );
-            
-            _accountProxy = new AccountProxy(httpClient);
+            var accessTokenProxy = new AccessTokenProxy(httpClient, _apiClientConfiguration, _headerEncoder);
+            var cachedTokenProxy = new CachedTokenProxy(new TokenCache(new CachingService()), accessTokenProxy);
+
+            _accountProxy = new AccountProxy(httpClient, cachedTokenProxy);
         }
 
         [Test, Explicit]
         public async Task GetAccounts_ReturnsResult()
         {
             var authResponse = await _accessTokenProxy.GetAccessToken(_customerId);
-            var response = await _accountProxy.GetAccounts(_customerId, authResponse.AccessToken);
+            var response = await _accountProxy.GetAccounts(_customerId);
             Console.Write(JsonConvert.SerializeObject(response, Formatting.Indented));
         }
 

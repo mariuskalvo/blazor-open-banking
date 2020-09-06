@@ -5,6 +5,6 @@ namespace BlazorBank.Infrastructure.Proxies
 {
     public interface ICardProxy
     {
-        Task<GetCardsResponse> GetCards(string customerId, string AccessToken);
+        Task<GetCardsResponse> GetCards(string customerId);
     }
 }

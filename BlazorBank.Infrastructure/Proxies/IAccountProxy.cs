@@ -5,6 +5,6 @@ namespace BlazorBank.Infrastructure.Proxies
 {
     public interface IAccountProxy
     {
-        Task<GetAccountsResponse> GetAccounts(string customerId, string AccessToken);
+        Task<GetAccountsResponse> GetAccounts(string customerId);
     }
 }

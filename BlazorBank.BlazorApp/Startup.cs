@@ -18,6 +18,8 @@ using System.Runtime.CompilerServices;
 using BlazorBank.Infrastructure.Utils;
 using BlazorBank.BlazorApp.ViewControllers;
 using BlazorBank.Services.Models;
+using BlazorBank.Infrastructure.Utils.AccessToken;
+using LazyCache;
 
 namespace BlazorBank.BlazorApp
 {
@@ -51,6 +53,9 @@ namespace BlazorBank.BlazorApp
             services.AddSingleton<IAccountMapper, AccountMapper>();
             services.AddSingleton<ICardMapper, CardMapper>();
 
+            services.AddSingleton<ICachedTokenProxy, CachedTokenProxy>();
+            services.AddSingleton<ITokenCache, TokenCache>();
+            services.AddSingleton<IAppCache, CachingService>();
 
             services.AddSingleton(new CustomerConfiguration
             {
