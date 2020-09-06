@@ -9,9 +9,12 @@ namespace BlazorBank.BlazorApp.ViewControllers
     public class AccountsViewController
     {
         private readonly IAccountService _accountService;
-        public AccountsViewController(IAccountService accountService)
+        private readonly ICardService _cardService;
+
+        public AccountsViewController(IAccountService accountService, ICardService cardService)
         {
             _accountService = accountService;
+            _cardService = cardService;
         }
         
         public async Task<IEnumerable<AccountWeb>> GetAccounts()
@@ -26,6 +29,19 @@ namespace BlazorBank.BlazorApp.ViewControllers
             });
 
             return accountsWeb;
+        }
+
+        public async Task<IEnumerable<CardWeb>> GetCards()
+        {
+            var cards = await _cardService.GetCards();
+            var cardsWeb = cards.Select(c => new CardWeb
+            {
+                AccountNumber = c.AccountNumber,
+                CardType = c.CardType,
+                ExpiryDate = c.ExpiryDate
+            });
+
+            return cardsWeb;
         }
     }
 }

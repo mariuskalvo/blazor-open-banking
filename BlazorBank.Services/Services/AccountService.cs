@@ -1,4 +1,6 @@
-﻿using BlazorBank.Infrastructure.Proxies;
+﻿using BlazorBank.Infrastructure.Models.Accounts;
+using BlazorBank.Infrastructure.Models.Cards;
+using BlazorBank.Infrastructure.Proxies;
 using BlazorBank.Services.Mappers;
 using BlazorBank.Services.Models;
 using System;
@@ -12,6 +14,10 @@ namespace BlazorBank.Services.Services
     {
         private readonly IAccountMapper _accountMapper;
         private readonly IAccountProxy _accountProxy;
+
+        private readonly ICardProxy _cardProxy;
+        private readonly ICardMapper _cardMapper;
+
         private readonly IAccessTokenProxy _accessTokenProxy;
         private readonly CustomerConfiguration _customerConfiguration;
 
@@ -19,12 +25,16 @@ namespace BlazorBank.Services.Services
             IAccountMapper accountMapper,
             IAccountProxy accountProxy,
             IAccessTokenProxy accessTokenProxy,
+            ICardProxy cardProxy,
+            ICardMapper cardMapper,
             CustomerConfiguration customerConfiguration
         )
         {
             _accountMapper = accountMapper;
             _accountProxy = accountProxy;
             _accessTokenProxy = accessTokenProxy;
+            _cardProxy = cardProxy;
+            _cardMapper = cardMapper;
             _customerConfiguration = customerConfiguration;
         }
         public async Task<IEnumerable<AccountInternal>> GetAccounts()

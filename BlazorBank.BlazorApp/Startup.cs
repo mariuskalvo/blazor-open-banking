@@ -41,12 +41,16 @@ namespace BlazorBank.BlazorApp
             services.AddScoped<AccountsViewController>();
 
             services.AddHttpClient<IAccountProxy, AccountProxy>();
+            services.AddHttpClient<ICardProxy, CardProxy>();
             services.AddHttpClient<IAccessTokenProxy, AccessTokenProxy>();
 
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICardService, CardService>();
 
             services.AddSingleton<IHeaderEncoder, SbankenHeaderEncoder>();
             services.AddSingleton<IAccountMapper, AccountMapper>();
+            services.AddSingleton<ICardMapper, CardMapper>();
+
 
             services.AddSingleton(new CustomerConfiguration
             {

@@ -3,23 +3,23 @@
 @using BlazorBank.BlazorApp.Formatters
 
 <div class="account-list__container">
-    @if (Accounts != null)
+    @if (Cards != null)
     {
         <h3 class="page-header">@Heading</h3>
-        @foreach (var account in Accounts)
+        @foreach (var card in Cards)
         {
             <div class="account-list__account-card">
                 <div class="account-list__account-card__account-info">
-                    <h4>@account.AccountName</h4>
-                    <small>@AccountFormatter.FormatAccountNumber(account.AccountNumber)</small>
+                    <h4>@card.CardType</h4>
+                    <small>@AccountFormatter.FormatAccountNumber(card.AccountNumber)</small>
                 </div>
                 <div class="account-list__account-card__account-balance">
-                    <small>Disponibelt</small>
-                    <h4>@AccountFormatter.FormatCurrentSum(account.Available),-</h4>
+                    <small>Utløpsdato</small>
+                    <h4>@card.ExpiryDate-</h4>
                 </div>
                 <div class="account-list__account-card__account-balance">
-                    <small>Saldo</small>
-                    <h4>@AccountFormatter.FormatCurrentSum(account.Balance),-</h4>
+                    <small>Kontonummer</small>
+                    <h4>@AccountFormatter.FormatAccountNumber(card.AccountNumber),-</h4>
                 </div>
 
             </div>
@@ -32,5 +32,5 @@
     public string Heading { get; set; }
 
     [Parameter]
-    public IEnumerable<AccountWeb> Accounts { get; set; }
+    public IEnumerable<CardWeb> Cards { get; set; }
 }

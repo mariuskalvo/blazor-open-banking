@@ -6,13 +6,22 @@
 
 @inject AccountsViewController AccountsViewController
 
-<AccountList Accounts="@_accounts" Heading="Kontoer" />
+<AccountList Accounts="@accounts" Heading="Kontoer" />
+<CardList Cards="@cards"  Heading="Kort"/>
 
 @code {
-    private IEnumerable<AccountWeb> _accounts = new List<AccountWeb>();
+
+    private IEnumerable<AccountWeb> accounts = new List<AccountWeb>();
+    private IEnumerable<CardWeb> cards = new List<CardWeb>();
 
     protected override async Task OnInitializedAsync()
     {
-        _accounts = await AccountsViewController.GetAccounts();
+        var accountsTask = AccountsViewController.GetAccounts();
+        var cardsTask = AccountsViewController.GetCards();
+
+        await Task.WhenAll(accountsTask, cardsTask);
+
+        accounts = accountsTask.Result;
+        cards = cardsTask.Result;
     }
 }
